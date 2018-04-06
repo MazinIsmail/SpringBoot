@@ -1,0 +1,14 @@
+applications:
+- name: patient-service
+  memory: 2048M
+  instances: 1
+  buildpack: java_buildpack_offline
+  path: target/patient-service-0.0.1.jar
+  random-route: true
+  services:
+  - config-server-mmisand
+  routes:
+  - route: patient-service-mmisand.apps.eas.pcf.manulife.com
+  env:
+    spring.profiles.active: SAND
+    spring.cloud.config.name: patient-service
